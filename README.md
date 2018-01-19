@@ -38,10 +38,10 @@ class smart_address_win64 : public smart_address<HANDLE, uintptr_t> {
 
   public:
 
-    using smart_address<void *, uintptr_t>::smart_address;
-    using smart_address<void *, uintptr_t>::operator =;
-    smart_address_win32(const smart_address<void *, uintptr_t> &p) :
-      smart_address<void *, uintptr_t>(p) { }
+    using smart_address<HANDLE, uintptr_t>::smart_address;
+    using smart_address<HANDLE, uintptr_t>::operator =;
+    smart_address_win32(const smart_address<HANDLE, uintptr_t> &p) :
+      smart_address<HANDLE, uintptr_t>(p) { }
 
   protected:
 

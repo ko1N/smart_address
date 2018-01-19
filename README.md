@@ -1,15 +1,14 @@
 # smart_address
 smart address container for remote memory access
 
+### requirements
+at least g++ / msvc with c++14 support enabled
+
 ### how to use?
-- enable c++14 support
-- include header
-...```c++
-#include "smart_address.h"
-```
-- create your implementation:
-...example: win32 local process access
-...```c++
+create your implementation:
+
+example: win32 local process access
+```c++
 template <typename B>
 class local_smart_address : public smart_address<void *, B> {
 
@@ -33,8 +32,8 @@ class local_smart_address : public smart_address<void *, B> {
 };
 ```
 
-...example: win32 rpm/wpm with 64 bit addresses
-...```c++
+example: win32 rpm/wpm with 64 bit addresses
+```c++
 class smart_address_win64 : public smart_address<HANDLE, uintptr_t> {
 
   public:
@@ -64,8 +63,8 @@ class smart_address_win64 : public smart_address<HANDLE, uintptr_t> {
 ```
 
 ### and now?
-- using the local address example as a test:
-...```c++
+using the local address example as a test:
+```c++
 char buf[1024];
 local_smart_address<uintptr_t> addr(nullptr);
 addr = (uintptr_t)buf;
@@ -84,8 +83,9 @@ printf("buf = %d\n", *(int *)buf);
 float b = 133.7f;
 *addr = b;
 ```
-- and now remote:
-...```c++
+
+and now remote:
+```c++
 // open a process and retrieve a address
 HANDLE h = OpenProcess(PROCESS_VM_READ | PROCESS_VM_WRITE, FALSE, pid);
 smart_address_win64 addr(h);
@@ -103,8 +103,9 @@ addr2 = addr1 + addr3 - (uintptr_t)0x7;
 if (addr2 != 0) {
 }
 ```
-- using structs:
-...```c++
+
+using structs:
+```c++
 struct str {
     int a, b, c, d;
 };

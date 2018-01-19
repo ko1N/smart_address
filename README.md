@@ -66,7 +66,7 @@ class smart_address_win64 : public smart_address<HANDLE, uintptr_t> {
 using the local address example as a test:
 ```c++
 char buf[1024];
-local_smart_address<uintptr_t> addr(nullptr);
+local_smart_address<uintptr_t> addr;
 addr = (uintptr_t)buf;
 
 // write 1337 to the buffer

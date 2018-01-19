@@ -78,12 +78,17 @@ class smart_address {
 
   public:
 
-    smart_address(void *handle) :
+    smart_address(void) :
+      m_address(0),
+      m_writer(_writer(this)),
+      m_buffer{ nullptr, 0 } { }
+
+    smart_address(H handle) :
       m_handle(handle), m_address(0),
       m_writer(_writer(this)),
       m_buffer{ nullptr, 0 } { }
 
-    smart_address(void *handle, const B &p) :
+    smart_address(H handle, const B &p) :
       smart_address(handle) {
       *this = p;
     }

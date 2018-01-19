@@ -124,5 +124,5 @@ printf("cs = { %d, %d, %d, %d }\n", cs.a, cs.b, cs.c, cs.d);
 ```
 
 ### authors
-- [ko1N](https://github.com/ko1N)
 - zbe
+- [ko1N](https://github.com/ko1N)
